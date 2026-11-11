@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apex Trust Bank</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a1628;--navy2:#112240;--crimson:#c41230;--gold:#c9a84c;--ink:#122033;--slate:#5c6678;--paper:#f4f5f7;--mist:rgba(255,255,255,.72)}
+*{box-sizing:border-box}body{margin:0;font-family:"DM Sans",system-ui,sans-serif;background:var(--navy);color:#fff}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.hidden{display:none!important}
+.site{position:fixed;inset:0 0 auto 0;z-index:30;height:4rem;display:flex;align-items:center;justify-content:space-between;padding:0 1rem;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.12)}
+.brand{display:flex;align-items:center;gap:.6rem;font-weight:700}
+.mark{width:2.4rem;height:2.4rem;display:grid;place-items:center;border-radius:.65rem;background:var(--crimson)}
+.solid{border:0;border-radius:.75rem;background:var(--crimson);color:#fff;padding:.7rem 1rem;font-weight:700}
+.ghost{border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;border-radius:.75rem;padding:.7rem 1rem}
+.icon{width:2.6rem;height:2.6rem;border:0;background:transparent;color:#fff}
+.hero{min-height:100svh;padding:6.5rem 1.15rem 2.5rem;background:linear-gradient(115deg,rgba(10,22,40,.92),rgba(10,22,40,.75) 50%,rgba(196,18,48,.18)),url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80") center/cover}
+.pill{display:inline-flex;border:1px solid rgba(196,18,48,.5);background:rgba(196,18,48,.22);border-radius:999px;padding:.35rem .75rem;font-size:.72rem;font-weight:700}
+h1.display,h2.display{font-family:"Playfair Display",Georgia,serif;font-weight:700;letter-spacing:-.02em;line-height:1.08;margin:.6rem 0 0}
+h1.display{font-size:clamp(2.2rem,7vw,4.2rem);max-width:14ch}
+h2.display{font-size:clamp(1.8rem,5vw,3rem);color:var(--ink)}
+.grad{background:linear-gradient(90deg,#e8183a,#c9a84c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{max-width:40rem;color:var(--mist);line-height:1.6}
+.row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.2rem}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.6rem}
+.stat b{display:block;font-size:1.35rem}.stat span{color:var(--crimson)}
+.band{background:var(--paper);color:var(--ink)}
+.band.white{background:#fff}.band.navy{background:var(--navy);color:#fff}
+.sec{padding:3.2rem 1.15rem}.inner{max-width:72rem;margin:0 auto}
+.eye{color:var(--crimson);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin:0}
+.grid4{display:grid;gap:.8rem}.grid3{display:grid;gap:.8rem}.grid2{display:grid;gap:.8rem}
+@media(min-width:720px){.grid2{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr 1fr}.grid4{grid-template-columns:1fr 1fr}}
+@media(min-width:1020px){.grid3{grid-template-columns:repeat(3,1fr)}.grid4{grid-template-columns:repeat(4,1fr)}}
+.card{background:#fff;color:var(--ink);border:1px solid rgba(18,32,51,.08);border-radius:1rem;padding:1.1rem}
+.card.dark{background:var(--navy);color:#fff;border:0}
+.card h3{margin:.7rem 0 .3rem}
+.muted{color:var(--slate);line-height:1.55}
+.mist{color:var(--mist);line-height:1.55}
+.pop{position:absolute;top:.8rem;right:.8rem;background:var(--crimson);color:#fff;border-radius:999px;font-size:.65rem;font-weight:700;padding:.2rem .5rem;letter-spacing:.04em}
+.why{display:grid;gap:1.4rem}@media(min-width:900px){.why{grid-template-columns:1.1fr .9fr;align-items:center}}
+img.cover{width:100%;object-fit:cover;border-radius:1.3rem}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:1rem}@media(min-width:900px){.nums{grid-template-columns:repeat(4,1fr)}}
+.nums b{font-family:"Playfair Display",Georgia,serif;font-size:2rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}th,td{text-align:left;padding:.8rem;border-top:1px solid rgba(18,32,51,.08)}
+thead th{background:var(--paper)}td.us,th.us{background:var(--navy);color:#fff}
+.checks{list-style:none;padding:0;margin:.6rem 0 0}.checks li{margin:.45rem 0}
+.stories{display:grid;gap:.8rem}@media(min-width:800px){.stories{grid-template-columns:1fr 1fr 1fr}}
+.acc{background:#fff;border-radius:1rem;padding:1rem}
+.acc button{width:100%;text-align:left;background:none;border:0;font-weight:700;padding:.7rem 0}
+.acc p{margin:0 0 .6rem;color:var(--slate)}
+footer{background:var(--navy);color:#fff;padding:2.5rem 1.15rem 1.4rem}
+.fgrid{display:grid;gap:1.2rem}@media(min-width:800px){.fgrid{grid-template-columns:1.3fr 1fr 1fr 1fr}}
+.sheet{background:#fff;color:var(--ink);min-height:100svh;padding:6rem 1.15rem 2rem}
+.app{background:#f3f4f6;color:var(--ink);min-height:100svh}
+.top{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #e7e9ee;display:flex;align-items:center;gap:.2rem;padding:.55rem .6rem}
+.page{max-width:46rem;margin:0 auto;padding:1rem .9rem 2.5rem}
+.balance{border-radius:1.3rem;padding:1.1rem;background:#142033;color:#fff}
+.amt{font-size:1.7rem;font-weight:750;margin:.35rem 0}
+.meta{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;border-top:1px solid rgba(255,255,255,.12);margin-top:.9rem;padding-top:.7rem;font-size:.72rem}
+.split{display:flex;justify-content:space-between;gap:.5rem;align-items:center}
+.blue{color:#2563eb;font-weight:700;text-decoration:underline}
+.badge{background:#ecfdf5;color:#047857;border-radius:999px;padding:.15rem .55rem;font-size:.75rem;font-weight:700}
+.menu{position:fixed;inset:0;z-index:50;display:flex}.drawer{width:min(100%,20rem);background:#fff;color:var(--ink);padding:1rem;overflow:auto}
+.drawer a,.drawer button{display:block;width:100%;text-align:left;background:none;border:0;padding:.7rem .2rem}
+.scrim{flex:1;border:0;background:rgba(0,0,0,.35)}
+label{display:block;font-weight:650;margin-top:.7rem;font-size:.9rem}
+input,select,textarea{width:100%;margin-top:.25rem;border:1px solid #d7dbe3;background:#f8f9fb;border-radius:.75rem;padding:.7rem}
+.tx{display:flex;justify-content:space-between;padding:.75rem 0;border-bottom:1px solid #e7e9ee}
+.neg{color:var(--crimson);font-weight:700}.pos{color:#047857;font-weight:700}
+.err{color:var(--crimson)}.ok{color:#047857}
+.mnav{position:fixed;inset:4rem 0 0 0;background:var(--navy);z-index:40;padding:1rem 1.2rem;overflow:auto}
+.mnav a{display:block;padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.wiz{max-width:28rem;margin:0 auto;background:#fff;color:var(--ink);border-radius:1.6rem;padding:1.5rem 1.15rem 1.7rem}
+.wiz h1{font-family:"Playfair Display",Georgia,serif;font-size:2.05rem;margin:.15rem 0 0;color:var(--ink)}
+.stepper{display:flex;align-items:center;margin-top:1.15rem}
+.sdot{width:2.4rem;height:2.4rem;border-radius:50%;display:grid;place-items:center;font-weight:700;background:#f4f5f8;color:var(--slate);border:1px solid #e4e7ee}
+.sdot.on{background:var(--crimson);color:#fff;border:0;box-shadow:0 0 0 6px rgba(196,18,48,.16)}
+.sdot.done{background:var(--navy);color:#fff;border:0}
+.sline{flex:1;height:1px;background:#e4e7ee;margin:0 .35rem}.sline.done{background:var(--navy)}
+.wh{margin:1.3rem 0 0;padding-bottom:.4rem;border-bottom:1px solid rgba(196,18,48,.25);color:var(--crimson);letter-spacing:.12em;font-size:.78rem}
+.wgo{display:flex;align-items:center;justify-content:center;width:14rem;margin:1.15rem auto 0;height:3rem;border:0;border-radius:.8rem;background:var(--crimson);color:#fff;font-weight:700}
+.wback{display:block;width:100%;margin-top:.65rem;height:3rem;border-radius:.8rem;border:1px solid #e6e8ee;background:#fff;font-weight:700;color:var(--ink)}
+.bars{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;margin-top:.55rem}
+.bars i{display:block;height:4px;border-radius:99px;background:#e4e7ee}
+.bars i.on{background:var(--crimson)}
+.robot{display:flex;align-items:center;gap:.7rem;margin-top:.8rem;border:1px solid #e6e8ee;background:#f6f7f9;border-radius:.8rem;padding:.75rem}
+</style>
+</head>
+<body>
+<header class="site" id="siteHead">
+  <a class="brand" href="#home"><span class="mark">▣</span> Apex Trust Bank</a>
+  <div>
+    <button class="icon" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+<nav id="mnav" class="mnav hidden">
+  <a href="#home">Home</a>
+  <a href="#services">Services</a>
+  <a href="#cards">Cards</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="#policies">Policies</a>
+  <a href="#faq">FAQs</a>
+  <a href="#signin">Log in</a>
+  <a href="#open">Create account</a>
+</nav>
+<main id="view"></main>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyB97VqeuFjNGg1xLDGoSLICQt399pwqreY",
+  authDomain: "work-1bd66.firebaseapp.com",
+  projectId: "work-1bd66",
+  storageBucket: "work-1bd66.firebasestorage.app",
+  messagingSenderId: "242809896604",
+  appId: "1:242809896604:web:4abb10e04844379c6df759"
+};
+const useCloud = firebaseConfig.apiKey && firebaseConfig.apiKey !== "PASTE_API_KEY";
+let auth = null;
+let db = null;
+if (useCloud) {
+  firebase.initializeApp(firebaseConfig);
+  auth = firebase.auth();
+  db = firebase.firestore();
+}
+const KEY="apex-trust-bank-html-v1";
+const seed=()=>({signedIn:false,hide:false,profile:{name:"Apex Member",email:"member@apextrust.example",phone:""},account:{number:"2015961076",balance:1514000,status:"Active"},cards:[],loans:[],txs:[
+ {id:"2cpQIQ",amount:-5000,status:"Pending",at:"2026-08-03T15:15:00.000Z",type:"Intra-Bank",beneficiary:"Angela Heaton",bank:"Apex Trust Bank • 271183701",description:"For bills"},
+ {id:"k18a",amount:-75000,status:"Successful",at:"2026-09-18T14:00:00.000Z",type:"Wire",beneficiary:"Northline Supplies",bank:"Apex Trust Bank",description:"Invoice 441"},
+ {id:"dep1",amount:12000,status:"Successful",at:"2026-09-20T09:05:00.000Z",type:"Deposit",beneficiary:"Payroll",bank:"Apex Trust Bank",description:"Salary"}
+]});
+let state=load();
+const signup={step:0,type:"",email:"",country:"",first:"",last:"",middle:"",gender:"",dob:"",phone:"",job:"",street:"",city:"",region:"",zip:"",password:"",confirm:"",human:false,show:false,error:""};
+const MONEY={"United States":["USD","$"],"United Kingdom":["GBP","£"],"United Arab Emirates":["AED","د.إ"],Canada:["CAD","$"],Nigeria:["NGN","₦"],Ghana:["GHS","₵"],Other:["USD","$"]};
+function load(){try{const r=localStorage.getItem(KEY);if(r)return Object.assign(seed(),JSON.parse(r));}catch(e){}return seed();}
+function save(){
+  localStorage.setItem(KEY,JSON.stringify(state));
+  if(useCloud && state.uid && state.signedIn){
+    db.collection("users").doc(state.uid).set({
+      name: state.profile.name,
+      email: state.profile.email,
+      phone: state.profile.phone,
+      account: state.account,
+      currency: state.currency || "USD",
+      txs: state.txs.slice(0, 40),
+      cards: state.cards,
+      loans: state.loans
+    }, {merge:true}).catch(()=>{});
+  }
+}
+function money(n){
+  if(state.hide)return "••••••";
+  const cur=state.currency||"USD";
+  try{
+    const t=Math.abs(n).toLocaleString("en-US",{style:"currency",currency:cur});
+    return n<0?"-"+t:t;
+  }catch(e){
+    return (n<0?"-":"")+cur+" "+Math.abs(n).toFixed(2);
+  }
+}
+function rid(){return Math.random().toString(36).slice(2,8);}
+function go(h){location.hash=h;}
+function route(){return (location.hash||"#home").replace("#","");}
+function esc(s){return String(s).replace(/"/g,"&"+"quot;");}
+const IMG={
+ trust:"https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+ app:"https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=900&q=80",
+ security:"https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+ advisor:"https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80",
+ ny:"https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=1200&q=80",
+ london:"https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80",
+ dubai:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
+ toronto:"https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=1200&q=80"
+};
+const STEPS=[["1","Choose Your Account","Select from Essential, Premier Plus, or Private Banking based on your goals and lifestyle."],["2","Verify Your Identity","Upload a government-issued ID and a selfie. Our secure AI verification takes under 60 seconds."],["3","Fund Your Account","Transfer from any existing bank, use a debit card, or deposit cash at 10,000+ partner locations."],["4","Start Banking","Your account is live instantly. Send money, earn interest, and manage everything from your dashboard."]];
+const OFFERS=[["Personal Banking","Checking, savings, and everyday financial tools built around how you actually live — not how banks assume you do.",0],["Business Banking","Dedicated accounts, payment infrastructure, payroll tools, and credit facilities for businesses of every size.",1],["Wealth Management","Personalized investment portfolios, estate planning, and dedicated advisors who treat your capital like their own.",0],["Loans & Mortgages","Competitive rates on home loans, personal credit, and business financing with transparent terms and fast approvals.",0],["Cards & Rewards","Visa and Mastercard options with cashback, air miles, and zero foreign transaction fees for global spenders.",0],["International Banking","Multi-currency accounts, SWIFT transfers, and foreign exchange services built for the globally mobile individual.",0]];
+const REASONS=[["Instant Digital Access","Open an account in under 5 minutes. Manage everything via our web platform or mobile app — available 24/7 from anywhere in the world."],["Bank-Grade Security","256-bit SSL encryption, biometric authentication, real-time fraud alerts, and regulatory oversight from four jurisdictions."],["Human Support, Always","Real relationship managers and support specialists — not bots. Reach us by phone, live chat, or email any hour of any day."],["Truly Global Reach","Full banking services across 42 countries. Multi-currency accounts, competitive FX rates, and seamless cross-border transfers."]];
+const COMPARE=[["Account opening time","Under 5 minutes","1–3 business days","Same day"],["International transfers","42+ countries, low fees","High fees, slow","Limited countries"],["Multi-currency accounts","Included","Rarely available","Some plans"],["Wealth management","Dedicated advisors","Premium tier only","Not available"],["24/7 human support","Always","Business hours only","Chat only"],["Monthly account fees","From $0","$12–$25/mo","From $0"],["FDIC / FCA regulated","Both","FDIC only","Varies"]];
+const POINTS=["Real-time balance and transaction tracking","Instant domestic and international transfers","Bill payment and scheduled standing orders","Spending insights and budgeting tools","Investment portfolio access and analytics","Card controls — freeze, unfreeze, set limits"];
+const STORIES=[["Switching to Apex Trust Bank was the best financial decision I made this decade. The international transfer fees alone saved my business over $8,000 last year.","Marcus Elliot","CEO, Vertex Trade Co. — New York, USA","ME"],["The wealth management team genuinely understood my goals. Within 14 months, my portfolio was performing better than anything I had managed independently for years.","Claire Whitmore","Senior Architect — London, UK","CW"],["Opening a multi-currency account took literally minutes. The platform is clean, the support is exceptional, and the FX rates are genuinely competitive.","Tariq Al-Rashid","Private Investor — Dubai, UAE","TA"],["As someone who travels constantly between Toronto and Istanbul, having a bank that works seamlessly in both places without surprise fees has been life-changing.","Ayşe Kaya","International Consultant — Toronto, Canada","AK"],["We moved our entire company payroll to Apex Trust Bank Business. The dashboard is extraordinarily clear and the integration with our accounting software was seamless.","James Hartwell","CFO, Meridian Group — Manchester, UK","JH"],["The mortgage process was the fastest I have ever experienced. Pre-approval in 24 hours, full approval in a week.","Sophie Renner","Marketing Director — Vancouver, Canada","SR"]];
+const SHIELDS=["256-bit SSL/TLS Encryption","Biometric Authentication","Real-time Fraud Alerts","Identity Verification","Redundant Data Centers","24/7 Security Monitoring"];
+const ACCOUNTS=[["Essential","Essential Checking","Everyday banking with no minimum balance, free debit card, and full digital access. Perfect for students and young professionals starting out.",["No monthly fees","Free debit card","Mobile banking","Overdraft protection"],"Open Now",0],["Premium","Premier Plus","For professionals who expect more — higher interest savings, fee-free international transfers, and a dedicated account manager on call.",["3.8% APY savings","Fee-free FX transfers","Priority support line","Cashback rewards card"],"Open Now",1],["Private","Private Banking","White-glove service for high-net-worth individuals. Dedicated wealth manager, bespoke investment strategies, and exclusive lifestyle benefits.",["Dedicated RM available 24/7","Bespoke investment portfolio","Airport lounge access","Concierge services"],"Request Invite",0]];
+const PRESS=[["Bloomberg","Redefining what modern banking looks like"],["Forbes","Top 10 digital banks to watch in 2024"],["Financial Times","A new benchmark for cross-border banking"],["TechCrunch","The infrastructure powering global finance"],["The Economist","Built for how business actually moves"]];
+const CITIES=[["New York, USA","Global Headquarters",IMG.ny],["London, UK","European Operations Hub",IMG.london],["Dubai, UAE","Middle East & Africa Hub",IMG.dubai],["Toronto, Canada","North American Operations",IMG.toronto]];
+const AWARDS=[["Best Digital Bank","FinTech Global Awards","2024"],["Top Customer Experience","Global Banking & Finance Review","2023 & 2024"],["Excellence in Security","Cybersecurity Excellence Awards","2022 – 2024"],["Best International Bank","World Finance Magazine","2023"],["Sustainable Finance Leader","Bloomberg Green Finance","2024"]];
+const FAQS=[["How do I open an account online?","Opening an account takes under 5 minutes. Choose your account type, verify your identity with a government-issued ID, and fund your account. You receive account details instantly upon approval."],["Is my money safe with Apex Trust Bank?","US-based accounts are FDIC insured up to $250,000. UK accounts are protected under the FSCS up to £85,000. Accounts also use 256-bit encryption and multi-factor authentication."],["Can I transfer money internationally?","International wires are available to 42+ countries from online banking. Premier Plus and Private Banking clients get fee-free international transfers. Standard accounts pay a flat $10 fee per transfer."],["What are your customer support hours?","Support is available 24 hours a day, 7 days a week by phone, live chat, and email. Private Banking clients have a dedicated relationship manager across time zones."],["Do you offer joint accounts?","Joint checking and savings accounts are available for couples, business partners, or family members. Both holders get full access and individual debit cards."]];
+function footer(){return `<footer><div class="inner fgrid"><div><p class="brand"><span class="mark">▣</span> Apex Trust Bank</p><p class="mist">Banking redefined for the modern world. Your financial future starts here.</p><p class="mist">+1 234 5678 90</p><p class="mist">New York · London · Dubai · Toronto</p></div><div><b>SERVICES</b><p><a href="#services">Personal Banking</a></p><p><a href="#services">Business Banking</a></p><p><a href="#services">Wealth Management</a></p><p><a href="#cards">Credit & Debit Cards</a></p></div><div><b>COMPANY</b><p><a href="#about">About Us</a></p><p><a href="#about">Leadership</a></p><p><a href="#contact">Contact Us</a></p></div><div><b>LEGAL</b><p><a href="#policies">Privacy Policy</a></p><p><a href="#policies">Terms of Service</a></p><p><a href="#faq">FAQs</a></p></div></div><p class="inner mist" style="border-top:1px solid rgba(255,255,255,.1);padding-top:1rem">© 2026 Apex Trust Bank. All rights reserved. Member FDIC. Equal Housing Lender.</p></footer>`;}
+function home(){
+  return `<section class="hero">
+    <p class="pill">FDIC Insured · FCA Authorised · DFSA Licensed</p>
+    <h1 class="display">Your Financial Future,<br><span class="grad">Engineered to Last</span></h1>
+    <p class="lede">Apex Trust Bank blends the trust of traditional banking with the precision of modern technology — serving individuals, families, and enterprises across four continents.</p>
+    <div class="row"><button class="solid" onclick="go('open')">Open an Account →</button><button class="ghost" onclick="go('services')">Explore Services ›</button></div>
+    <p>Already with us? <a href="#signin" style="text-decoration:underline">Log in</a></p>
+    <div class="stats"><div class="stat"><b>6<span>M+</span></b>Customers Worldwide</div><div class="stat"><b>17<span>yrs</span></b>Established Track Record</div><div class="stat"><b>42<span>+</span></b>Countries Served</div><div class="stat"><b>99.97<span>%</span></b>Uptime Guarantee</div></div>
+  </section>
+  <section class="band"><div class="sec inner"><p class="eye">Get Started</p><h2 class="display">Up and Running in Minutes</h2><p class="muted">Opening an Apex Trust Bank account is the fastest financial decision you will make. No branch visits. No paperwork. No waiting.</p><div class="grid4" style="margin-top:1rem">${STEPS.map(s=>`<article class="card"><b style="color:var(--crimson);font-family:Playfair Display,serif;font-size:1.8rem">${s[0]}</b><h3>${s[1]}</h3><p class="muted">${s[2]}</p></article>`).join("")}</div></div></section>
+  <section class="band white"><div class="sec inner"><p class="eye">What We Offer</p><h2 class="display">Banking Without Boundaries</h2><p class="muted">From everyday spending to complex wealth strategies — we have a solution designed specifically for your life stage and goals.</p><div class="grid3" style="margin-top:1rem">${OFFERS.map(o=>`<article class="card ${o[2]?"dark":""}" style="position:relative">${o[2]?'<span class="pop">MOST POPULAR</span>':""}<h3>${o[0]}</h3><p class="${o[2]?"mist":"muted"}">${o[1]}</p><a href="#open" style="color:${o[2]?"var(--gold)":"var(--crimson)"};font-weight:700">Discover More →</a></article>`).join("")}</div></div></section>
+  <section class="band"><div class="sec inner why"><div><p class="eye">Why Choose Apex Trust Bank</p><h2 class="display">Not Just a Bank. A Financial Partner.</h2><p class="muted">Since 2008, we have operated on a singular principle: that every client deserves the same precision and dedication once reserved for the ultra-wealthy.</p><ul class="checks">${REASONS.map(r=>`<li><b>${r[0]}</b><br><span class="muted">${r[1]}</span></li>`).join("")}</ul></div><div style="position:relative"><img class="cover" style="aspect-ratio:4/5" src="${IMG.trust}" alt=""><div class="card" style="position:absolute;left:1rem;right:1rem;bottom:1rem;background:rgba(10,22,40,.92);color:#fff"><small style="color:var(--gold)">FULLY REGULATED</small><b>FDIC · FCA · DFSA</b></div></div></div></section>
+  <section class="band navy"><div class="sec inner nums"><div><b>6M+</b><p class="mist">Active Customers</p></div><div><b>$48B+</b><p class="mist">Transactions Processed Annually</p></div><div><b>180+</b><p class="mist">Branch & Partner Locations</p></div><div><b>34</b><p class="mist">Industry Awards</p></div></div></section>
+  <section class="band white"><div class="sec inner"><p class="eye">Compare</p><h2 class="display">How We Stack Up</h2><p class="muted">See how Apex Trust Bank compares to traditional high-street banks on the features that matter most.</p><div style="margin-top:1rem">${COMPARE.map(r=>`<article class="card" style="margin-bottom:.6rem"><b>${r[0]}</b><p style="background:var(--navy);color:#fff;border-radius:.7rem;padding:.6rem"><small style="color:var(--gold)">APEX TRUST</small><br>${r[1]}</p><p class="muted">Traditional banks: ${r[2]}</p><p class="muted">Challenger banks: ${r[3]}</p></article>`).join("")}</div></div></section>
+  <section class="band"><div class="sec inner why"><img class="cover" style="aspect-ratio:3/4;max-width:22rem" src="${IMG.app}" alt=""><div><p class="eye">Mobile & Web Banking</p><h2 class="display">Your Entire Bank, In One Place</h2><p class="muted">The Apex Trust Bank platform is where smart banking happens. Intuitive dashboards, instant transfers, investment tracking, and spending analytics.</p><ul class="checks">${POINTS.map(p=>`<li>${p}</li>`).join("")}</ul><div class="row"><a class="solid" href="#open">Open the dashboard</a><a class="ghost" style="color:var(--ink);border-color:rgba(18,32,51,.2)" href="#cards">See cards</a></div></div></div></section>
+  <section class="band white"><div class="sec inner"><p class="eye">Customer Stories</p><h2 class="display">What Our Clients Say</h2><div class="stories" style="margin-top:1rem">${STORIES.map(s=>`<figure class="card"><blockquote class="muted">“${s[0]}”</blockquote><figcaption style="margin-top:.8rem"><b>${s[3]}</b> ${s[1]}<br><small class="muted">${s[2]}</small></figcaption></figure>`).join("")}</div></div></section>
+  <section class="band"><div class="sec inner why"><div><p class="eye">Security & Compliance</p><h2 class="display">Security Is Not a Feature. It's a Foundation.</h2><p class="muted">Every layer of Apex Trust Bank's infrastructure is engineered with security as the first principle.</p><ul class="checks">${SHIELDS.map(s=>`<li>${s}</li>`).join("")}</ul><p><b style="color:var(--crimson);font-size:1.6rem">Zero</b> breaches · <b style="color:var(--crimson);font-size:1.6rem">17 Years</b> of clean record</p></div><img class="cover" style="aspect-ratio:4/3" src="${IMG.security}" alt=""></div></section>
+  <section class="band navy" id="accounts"><div class="sec inner"><p class="eye">Choose Your Account</p><h2 class="display" style="color:#fff">Accounts That Fit Your Life</h2><p class="mist">Whether you are saving for a home, building a business, or managing inherited wealth — there is an Apex Trust Bank account designed for where you are right now.</p><div class="grid3" style="margin-top:1rem">${ACCOUNTS.map(a=>`<article class="card" style="${a[5]?"outline:2px solid var(--crimson)":"background:var(--navy2);color:#fff;border:0"}"><small style="color:var(--crimson)">${a[0].toUpperCase()}</small><h3>${a[1]}</h3><p class="${a[5]?"muted":"mist"}">${a[2]}</p><ul class="checks">${a[3].map(p=>`<li>${p}</li>`).join("")}</ul><button class="solid" style="width:100%;margin-top:.8rem" onclick="go('open')">${a[4]}</button></article>`).join("")}</div></div></section>
+  <section class="band"><div class="sec inner"><p class="eye" style="text-align:center">As Featured In</p><div class="grid3" style="margin-top:1rem">${PRESS.map(p=>`<article class="card"><b style="font-family:Playfair Display,serif;font-size:1.2rem">${p[0]}</b><p class="muted">“${p[1]}”</p></article>`).join("")}</div></div></section>
+  <section class="band white"><div class="sec inner"><p class="eye">Global Presence</p><h2 class="display">Where You Are, We Are</h2><p class="muted">Headquartered in New York with primary hubs in London, Dubai, Toronto, and Istanbul.</p><div class="grid2" style="margin-top:1rem">${CITIES.map(c=>`<article style="position:relative"><img class="cover" style="aspect-ratio:16/10" src="${c[2]}" alt=""><div style="position:absolute;left:1rem;bottom:1rem"><b>${c[0]}</b><br><span class="mist">${c[1]}</span></div></article>`).join("")}</div></div></section>
+  <section style="position:relative;padding:4rem 1.15rem;text-align:center"><img src="${IMG.advisor}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><div style="position:absolute;inset:0;background:rgba(10,22,40,.78)"></div><div class="inner" style="position:relative"><h2 class="display" style="color:#fff;margin:0 auto">Ready to Take Control of Your Financial Future?</h2><p class="mist">Join over 6.2 million customers worldwide who trust Apex Trust Bank. Opening an account takes less than 5 minutes.</p><div class="row" style="justify-content:center"><button class="solid" onclick="go('open')">Open Free Account</button><button class="ghost" onclick="go('contact')">Talk to an Advisor</button></div></div></section>
+  <section class="band"><div class="sec inner"><p class="eye">Recognition</p><h2 class="display">Recognized by the Industry's Best</h2><div class="grid3" style="margin-top:1rem">${AWARDS.map(a=>`<article class="card"><b>${a[0]}</b><p class="muted">${a[1]}</p><small style="color:var(--crimson)">${a[2]}</small></article>`).join("")}</div></div></section>
+  <section class="band white" id="faq"><div class="sec inner"><p class="eye">FAQs</p><h2 class="display">Common Questions, Answered Directly</h2><div style="margin-top:1rem">${FAQS.map((f,i)=>`<div class="acc"><button onclick="this.nextElementSibling.classList.toggle('hidden')">${f[0]}</button><p class="hidden">${f[1]}</p></div>`).join("")}</div></div></section>
+  ${footer()}`;
+}
+function page(title, body){return `<section class="sheet"><div class="inner"><p class="eye">Apex Trust Bank</p><h2 class="display">${title}</h2>${body}</div>${footer()}</section>`;}
+function services(){return page("Services",`<div class="grid2" style="margin-top:1rem">${OFFERS.map(o=>`<article class="card" id="${o[0].toLowerCase().split(" ")[0]}"><h3>${o[0]}</h3><p class="muted">${o[1]}</p><a href="#open" style="color:var(--crimson);font-weight:700">Open an account →</a></article>`).join("")}</div>`);}
+function about(){return page("About Apex Trust Bank",`<p class="muted">Incorporated in New York, Apex Trust Bank was built on a short brief: complete transparency, genuine customer obsession, and technology that served people rather than processes.</p><div class="grid3" style="margin-top:1rem"><article class="card"><h3>2008</h3><p class="muted">Bank founded in New York.</p></article><article class="card"><h3>42+</h3><p class="muted">Countries served today.</p></article><article class="card"><h3>6.2M</h3><p class="muted">Customers worldwide.</p></article></div>`);}
+function cardsPage(){return page("Cards",`<div class="grid2"><article class="card"><h3>Essential Debit</h3><p class="muted">Contactless payments, mobile wallets, real-time spend alerts, and instant freeze.</p></article><article class="card"><h3>Premier Rewards</h3><p class="muted">Cashback, air miles, and zero foreign transaction fees.</p></article></div><p><button class="solid" onclick="go('open')">Get a card</button></p>`);}
+function contact(){return page("Contact",`<form id="contact" class="card"><label>Name<input name="name" required></label><label>Email<input name="email" type="email" required></label><label>Message<textarea name="message" required></textarea></label><button class="solid" style="margin-top:.8rem">Send</button><p id="msg"></p></form><p class="muted">Email hello@apextrust.example · +1 234 5678 90</p>`);}
+function policies(){return page("Policies",`<article class="card"><h3>Privacy</h3><p class="muted">An account is a contract between you and Apex Trust Bank. Using the app means you agree to the fee schedule shown before you confirm a product.</p><h3>Terms</h3><p class="muted">This preview does not move real money. Balances stay in this browser only.</p><h3>Security</h3><p class="muted">256-bit encryption, biometric sign-in, and 24/7 monitoring are described here as product copy for the demo.</p></article>`);}
+function signin(){return `<section class="sheet"><div class="card" style="max-width:28rem;margin:2rem auto"><h2>Sign in</h2><p class="muted">New here? <a href="#open" style="color:var(--crimson);font-weight:700">Create one free</a></p><form id="in"><label>Email<input name="email" type="email" required></label><label>Password<input name="password" type="password" required></label><p id="msg" class="err"></p><button class="solid" style="width:100%;margin-top:1rem">Sign in</button></form></div></section>`;}
+function openAccount(){
+  const s=signup;
+  const money=(MONEY[s.country]||["",""]);
+  const titles=["ACCOUNT DETAILS","PERSONAL INFORMATION","ADDRESS & LOCATION","SET YOUR PASSWORD"];
+  const dots=[0,1,2,3].map(i=>{
+    const cls=i<s.step?"sdot done":i===s.step?"sdot on":"sdot";
+    const line=i<3?`<span class="sline${i<s.step?" done":""}"></span>`:"";
+    return `<span class="${cls}">${i<s.step?"✓":i+1}</span>${line}`;
+  }).join("");
+  const opt=(list,val,blank)=>`<option value="">${blank}</option>`+list.map(x=>`<option${x===val?" selected":""}>${x}</option>`).join("");
+  const lab=(name,inner,req)=>`<label>${name}${req?' <span style="color:var(--crimson)">*</span>':""}${inner}</label>`;
+  const inp=(id,val,ph,type)=>`<input name="${id}" type="${type||"text"}" value="${esc(val)}" placeholder="${ph||""}" ${id==="currency"||id==="symbol"?"readonly":""}>`;
+  let fields="";
+  if(s.step===0){
+    fields=lab("Account type",`<select name="type">${opt(["Checking","Savings","Current Account","Premier Plus","Business Account"],s.type,"Select account type")}</select>`,1)
+      +lab("Email address",inp("email",s.email,"you@example.com","email"),1)
+      +lab("Country",`<select name="country" onchange="keepSignup();render()">${opt(["United States","United Kingdom","United Arab Emirates","Canada","Nigeria","Ghana","Other"],s.country,"Select country")}</select>`,1)
+      +lab("Base currency",inp("currency",money[0],"Auto-filled"),1)
+      +lab("Currency symbol",inp("symbol",money[1],"Auto-filled"),1);
+  }else if(s.step===1){
+    fields=lab("First name",inp("first",s.first,"John"),1)
+      +lab("Last name",inp("last",s.last,"Doe"),1)
+      +lab("Middle name",inp("middle",s.middle,"Optional"))
+      +lab("Gender",`<select name="gender">${opt(["Female","Male","Prefer not to say"],s.gender,"Select")}</select>`,1)
+      +lab("Date of birth",inp("dob",s.dob,"","date"),1)
+      +lab("Phone number",inp("phone",s.phone,"+1 555 000 0000"),1)
+      +lab("Employment status",`<select name="job">${opt(["Employed","Self-employed","Student","Retired","Unemployed"],s.job,"Select")}</select>`,1);
+  }else if(s.step===2){
+    fields=lab("Street address",inp("street",s.street,"123 Main Street"),1)
+      +lab("City",inp("city",s.city,"New York"),1)
+      +lab("State / Province",inp("region",s.region,"NY"),1)
+      +lab("ZIP / Postal code",inp("zip",s.zip,"10001"),1);
+  }else{
+    const n=s.password.length===0?0:s.password.length<8?1:s.password.length<12?2:3;
+    const label=["Enter a password","Too short","Fair","Strong"][n];
+    fields=lab("Password",`<span style="position:relative;display:block">${inp("password",s.password,"Min. 8 characters",s.show?"text":"password")}<button type="button" style="position:absolute;right:.7rem;top:1.7rem;border:0;background:transparent" onclick="signup.show=!signup.show;keepSignup();render()">${s.show?"hide":"show"}</button></span>`,1)
+      +`<div class="bars">${[0,1,2,3].map(i=>`<i class="${i<n?"on":""}"></i>`).join("")}</div><p class="muted">${label}</p>`
+      +lab("Confirm password",inp("confirm",s.confirm,"Repeat password",s.show?"text":"password"),1)
+      +`<label class="robot"><input type="checkbox" name="human" ${s.human?"checked":""} style="width:auto"> I'm not a robot</label>`;
+  }
+  return `<main style="min-height:100svh;background:#eef0f4;padding:1.2rem .8rem 2rem"><div class="wiz">
+    <a class="brand" href="#home" style="color:var(--ink)"><span class="mark">▣</span> Apex Trust Bank</a>
+    <p class="eye" style="margin-top:1.4rem">Get started</p>
+    <h1>Create your account</h1>
+    <p class="muted">Already have an account? <a href="#signin" style="color:var(--crimson);font-weight:700">Sign in here</a></p>
+    <div class="stepper">${dots}</div>
+    <h2 class="wh">${titles[s.step]}</h2>
+    <form id="up">${fields}<p id="msg" class="err">${s.error||""}</p>
+      <button class="wgo" type="submit">${s.step===3?"Create account ✓":"Continue →"}</button>
+      ${s.step?`<button class="wback" type="button" onclick="keepSignup();signup.step--;signup.error='';render()">← Back</button>`:""}
+    </form>
+    ${s.step===3?`<p class="muted" style="text-align:center;margin-top:1rem">By creating an account you agree to our <a href="#policies" style="color:var(--crimson);font-weight:700">Terms of Service</a> and <a href="#policies" style="color:var(--crimson);font-weight:700">Privacy Policy</a>.</p>`:""}
+  </div></main>`;
+}
+function keepSignup(){
+  const form=document.getElementById("up");
+  if(!form)return;
+  const d=new FormData(form);
+  ["type","email","country","first","last","middle","gender","dob","phone","job","street","city","region","zip","password","confirm"].forEach(k=>{
+    if(d.has(k))signup[k]=String(d.get(k)||"");
+  });
+  if(signup.step===3)signup.human=form.querySelector('[name="human"]')?.checked||false;
+}
+function shell(inner){
+  const initials=state.profile.name.split(" ").slice(0,2).map(p=>p[0]||"").join("").toUpperCase();
+  return `<div class="app"><div class="top"><a class="mark" href="#dash">▣</a><button class="icon" style="color:#6b7280" onclick="document.getElementById('dmenu').classList.remove('hidden')">☰</button><span style="margin-left:auto" class="badge">${initials}</span><button class="icon" style="color:var(--crimson)" onclick="signOut()">⎋</button></div>
+  <div id="dmenu" class="menu hidden"><nav class="drawer"><button onclick="document.getElementById('dmenu').classList.add('hidden')">Close</button><a href="#dash">Dashboard</a><a href="#summary">Account Summary</a><a href="#send">Send Money</a><a href="#transfer">Transfer</a><a href="#bills">Pay Bills</a><a href="#history">Transaction History</a><a href="#check">Deposit Check</a><a href="#crypto">Deposit Crypto</a><a href="#loans">Loans</a><a href="#mycards">Cards</a><a href="#kyc">KYC</a><a href="#profile">Profile</a><a href="#support">Support</a><button style="color:var(--crimson);font-weight:700" onclick="signOut()">Sign Out</button></nav><button class="scrim" onclick="document.getElementById('dmenu').classList.add('hidden')"></button></div>
+  <div class="page">${inner}</div></div>`;
+}
+function hello(){const h=new Date().getHours();return (h<12?"Good Morning":h<17?"Good Afternoon":"Good Evening")+", "+state.profile.name;}
+function txList(rows){if(!rows.length)return `<p class="muted">No transactions.</p>`;return rows.map(tx=>`<a class="tx" href="#receipt/${tx.id}"><span><b class="${tx.amount<0?"neg":"pos"}">${money(tx.amount)}</b><br><span class="muted">${tx.beneficiary}</span></span><span>${tx.status}</span></a>`).join("");}
+function dash(){const a=state.account,loan=state.loans[0];return shell(`<h2 style="margin:0">Dashboard</h2><p class="muted">${hello()}</p><section class="balance"><div class="split"><span>Total Balance</span><button class="ghost" onclick="go('send')">Transfer</button></div><p class="amt">${money(a.balance)} <button style="border:0;background:transparent;color:#fff" onclick="state.hide=!state.hide;save();render()">${state.hide?"show":"hide"}</button></p><div class="meta"><div>Linked<br>Cards<br><b>${state.cards.length}</b></div><div>Account<br>Holder<br><b>${state.profile.name}</b></div><div>Network<br><b>This device</b></div></div></section><article class="card" style="margin-top:.8rem"><div class="split"><b>Current Account</b><span class="muted">Primary</span></div><p class="muted">Account Number</p><a class="blue" href="#summary">${a.number}</a><p class="muted">Available Balance</p><p style="font-size:1.45rem;font-weight:750;margin:.2rem 0">${money(a.balance)}</p><div class="split"><span class="muted">Account Type</span><b>Current Account</b></div><div class="split"><span class="muted">Status</span><span class="badge">${a.status}</span></div></article><a class="card" style="display:block;margin-top:.8rem" href="#loans"><b>Loan</b><p class="muted">${loan?loan.product+" · "+loan.status:"No active loan"}</p></a><h3>Shortcuts</h3><div class="row"><a class="card" href="#send">Send Money</a><a class="card" href="#bills">Pay Bills</a><a class="card" href="#history">Transaction History</a></div><h3>Recent Transactions</h3><div class="card">${txList(state.txs.slice(0,5))}</div>`);}
+function formPage(title,lede,fields,id){return shell(`<form id="${id}" class="card"><h3>${title}</h3><p class="muted">${lede}</p>${fields}<p id="msg"></p><button class="solid" style="margin-top:.8rem">Continue</button></form>`);}
+function summary(){return shell(`<h3>Account Summary</h3><article class="card"><b>Current Account</b><p class="blue">${state.account.number}</p><p style="font-size:1.5rem;font-weight:750">${money(state.account.balance)}</p><span class="badge">${state.account.status}</span></article>`);}
+function history(){return shell(`<h3>Transaction History</h3><div class="card">${txList(state.txs)}</div>`);}
+function mycards(){const list=state.cards.map(c=>`<div class="card" style="background:#0a1628;color:#fff;margin-top:.6rem"><small>${c.brand}</small><p style="font-family:monospace">•••• ${c.last4}</p></div>`).join("")||`<p class="muted">You haven't added any cards yet.</p>`;return shell(`<div class="split"><h3>My Cards</h3><button class="solid" onclick="addCard()">Add card</button></div>${list}`);}
+function addCard(){state.cards.unshift({brand:"Essential Debit",last4:String(1000+Math.floor(Math.random()*9000))});save();render();}
+function loans(){return shell(`<h3>Loans</h3><form id="loan" class="card"><label>Product<select name="product"><option>Personal loan</option><option>Auto loan</option><option>Home mortgage</option></select></label><label>Amount<input name="amount" type="number" required></label><button class="solid" style="margin-top:.8rem">Apply</button></form>${state.loans.map(l=>`<p>${l.product} · ${money(l.amount)} · ${l.status}</p>`).join("")}`);}
+function profile(){const p=state.profile;return shell(`<h3>Profile</h3><form id="profile" class="card"><label>Name<input name="name" value="${esc(p.name)}"></label><label>Email<input name="email" value="${esc(p.email)}"></label><label>Phone<input name="phone" value="${esc(p.phone)}"></label><button class="solid" style="margin-top:.8rem">Save</button><p id="msg"></p></form>`);}
+function support(){return shell(`<h3>Support</h3><form id="support" class="card"><label>Subject<input name="subject" required></label><label>Message<textarea name="message" required></textarea></label><button class="solid" style="margin-top:.8rem">Send</button><p id="msg"></p></form>`);}
+function kyc(){return shell(`<h3>KYC</h3><p>Status: ${state.kyc||"Unverified"}</p><form id="kyc" class="card"><label>Government ID<input name="id" required></label><button class="solid" style="margin-top:.8rem">Submit</button><p id="msg"></p></form>`);}
+function receipt(id){const tx=state.txs.find(t=>t.id===id);if(!tx)return shell(`<h3>Receipt not found</h3>`);return shell(`<h3>Transaction Receipt</h3><p class="muted">Reference #${tx.id}</p><div class="card"><p class="split"><span>Amount</span><b class="${tx.amount<0?"neg":"pos"}">${money(tx.amount)}</b></p><p class="split"><span>Status</span><b>${tx.status}</b></p><p class="split"><span>Date</span><b>${tx.at}</b></p><p class="split"><span>Type</span><b>${tx.type}</b></p><p class="split"><span>Beneficiary</span><b>${tx.beneficiary}<br><span class="muted">${tx.bank}</span></b></p><p class="split"><span>Description</span><b>${tx.description}</b></p></div>`);}
+function signOut(){
+  state.signedIn=false;
+  state.uid="";
+  localStorage.setItem(KEY,JSON.stringify(state));
+  if(useCloud && auth.currentUser) auth.signOut();
+  go("home");
+}
+function spend(amount,tx){if(!(amount>0))return "Enter an amount greater than zero.";if(state.account.balance<amount)return "Not enough money in Current Account.";state.account.balance=Math.round((state.account.balance-amount)*100)/100;state.txs.unshift(tx);save();return "";}
+function credit(amount,tx){if(!(amount>0))return "Enter an amount greater than zero.";state.account.balance=Math.round((state.account.balance+amount)*100)/100;state.txs.unshift(tx);save();return "";}
+const APP=new Set(["dash","summary","send","transfer","bills","history","check","crypto","loans","mycards","kyc","profile","support"]);
+function render(){
+  const r=route();
+  const app=APP.has(r)||r.startsWith("receipt/");
+  document.getElementById("siteHead").classList.toggle("hidden",(app&&state.signedIn)||r==="open");
+  document.getElementById("mnav").classList.add("hidden");
+  const view=document.getElementById("view");
+  if(app&&!state.signedIn){go("signin");return;}
+  if(r==="home"||r==="")view.innerHTML=home();
+  else if(r==="signin")view.innerHTML=signin();
+  else if(r==="open")view.innerHTML=openAccount();
+  else if(r==="services")view.innerHTML=services();
+  else if(r==="about")view.innerHTML=about();
+  else if(r==="cards")view.innerHTML=cardsPage();
+  else if(r==="contact")view.innerHTML=contact();
+  else if(r==="policies")view.innerHTML=policies();
+  else if(r==="faq"){view.innerHTML=home();setTimeout(()=>{const el=document.getElementById("faq");if(el)el.scrollIntoView();},30);}
+  else if(r==="dash")view.innerHTML=dash();
+  else if(r==="summary")view.innerHTML=summary();
+  else if(r==="send"||r==="transfer")view.innerHTML=formPage(r==="transfer"?"Transfer":"Send Money","Available "+money(state.account.balance),`<label>Beneficiary<input name="name" required></label><label>Account<input name="account" required></label><label>Amount<input name="amount" type="number" step="0.01" required></label><label>Description<input name="description"></label>`,"pay");
+  else if(r==="bills")view.innerHTML=formPage("Pay Bills","Pay a biller from Current Account.",`<label>Biller<input name="biller" required></label><label>Amount<input name="amount" type="number" step="0.01" required></label><label>Reference<input name="reference"></label>`,"bill");
+  else if(r==="check")view.innerHTML=formPage("Deposit","This adds money to your current account.",`<label>Amount<input name="amount" type="number" step="0.01" required></label><label>Note<input name="note" placeholder="Cash, check, or transfer in"></label>`,"check");
+  else if(r==="crypto")view.innerHTML=formPage("Deposit Crypto","Amount is added to your balance in your account currency.",`<label>Asset<select name="asset"><option>USDT</option><option>BTC</option><option>ETH</option></select></label><label>Amount<input name="amount" type="number" step="0.01" required></label>`,"crypto");
+  else if(r==="history")view.innerHTML=history();
+  else if(r==="mycards")view.innerHTML=mycards();
+  else if(r==="loans")view.innerHTML=loans();
+  else if(r==="profile")view.innerHTML=profile();
+  else if(r==="support")view.innerHTML=support();
+  else if(r==="kyc")view.innerHTML=kyc();
+  else if(r.startsWith("receipt/"))view.innerHTML=receipt(r.split("/")[1]);
+  else view.innerHTML=home();
+  bind();
+}
+function bind(){
+  const on=(id,fn)=>{const el=document.getElementById(id);if(el)el.onsubmit=(e)=>{e.preventDefault();fn(new FormData(el));};};
+  on("in",(d)=>{
+    const email=String(d.get("email")||"").trim();
+    const password=String(d.get("password")||"");
+    const fail=(text)=>{const msg=document.getElementById("msg"); if(msg) msg.textContent=text;};
+    if(!useCloud){state.profile.email=email||state.profile.email; state.signedIn=true; save(); go("dash"); return;}
+    auth.signInWithEmailAndPassword(email, password).then((cred)=>loadCloudUser(cred.user.uid)).catch((err)=>fail(err.message));
+  });
+  on("up",()=>{
+    keepSignup();
+    const s=signup;
+    const missing=s.step===0?!s.type||!s.email||!s.country:s.step===1?!s.first||!s.last||!s.gender||!s.dob||!s.phone||!s.job:s.step===2?!s.street||!s.city||!s.region||!s.zip:s.password.length<8||s.password!==s.confirm||!s.human;
+    if(s.step===3&&s.password.length<8){s.error="Password must be at least 8 characters.";render();return;}
+    if(s.step===3&&s.password!==s.confirm){s.error="Passwords do not match.";render();return;}
+    if(s.step===3&&!s.human){s.error="Confirm you are not a robot.";render();return;}
+    if(missing){s.error="Fill in the required fields.";render();return;}
+    s.error="";
+    if(s.step<3){s.step++;render();return;}
+    const finish=()=>{
+      state.profile.name=[s.first,s.middle,s.last].filter(Boolean).join(" ");
+      state.profile.email=s.email;
+      state.profile.phone=s.phone;
+      state.signedIn=true;
+      save();
+      go("dash");
+    };
+    if(!useCloud){finish();return;}
+    auth.createUserWithEmailAndPassword(s.email, s.password).then((cred)=>{
+      const code=MONEY[s.country]||["USD","$"];
+      state.uid=cred.user.uid;
+      state.profile.name=[s.first,s.middle,s.last].filter(Boolean).join(" ");
+      state.profile.email=s.email;
+      state.profile.phone=s.phone;
+      state.currency=code[0];
+      state.account={number:String(2000000000+Math.floor(Math.random()*700000000)),balance:0,status:"Active"};
+      state.txs=[];
+      state.cards=[];
+      state.loans=[];
+      state.kyc="Unverified";
+      state.signedIn=true;
+      return db.collection("users").doc(cred.user.uid).set({
+        name: state.profile.name,
+        email: s.email,
+        phone: s.phone,
+        country: s.country,
+        currency: state.currency,
+        accountType: s.type,
+        address: {street:s.street, city:s.city, region:s.region, zip:s.zip},
+        account: state.account,
+        txs: [],
+        cards: [],
+        loans: []
+      });
+    }).then(()=>{localStorage.setItem(KEY,JSON.stringify(state)); go("dash");}).catch((err)=>{s.error=err.message; render();});
+  });
+  on("contact",()=>{document.getElementById("msg").innerHTML='<span class="ok">Message saved in this browser only.</span>';});
+  on("pay",(d)=>{const amount=Number(d.get("amount"));const id=rid();const err=spend(amount,{id,amount:-amount,status:"Successful",at:new Date().toISOString(),type:route()==="transfer"?"Wire":"Intra-Bank",beneficiary:String(d.get("name")),bank:"Apex Trust Bank • "+d.get("account"),description:String(d.get("description")||"Transfer")});const msg=document.getElementById("msg");if(msg)msg.innerHTML=err?`<span class="err">${err}</span>`:`<span class="ok">Saved. <a href="#receipt/${id}">View receipt</a></span>`;});
+  on("bill",(d)=>{const amount=Number(d.get("amount"));const id=rid();const err=spend(amount,{id,amount:-amount,status:"Successful",at:new Date().toISOString(),type:"Bill payment",beneficiary:String(d.get("biller")),bank:"Apex Trust Bank • Bills",description:String(d.get("reference")||"Bill")});const msg=document.getElementById("msg");if(msg)msg.innerHTML=err?`<span class="err">${err}</span>`:`<span class="ok">Saved. <a href="#receipt/${id}">View receipt</a></span>`;});
+  on("check",(d)=>{const amount=Number(d.get("amount"));const id=rid();const err=credit(amount,{id,amount,status:"Successful",at:new Date().toISOString(),type:"Deposit",beneficiary:"Deposit",bank:"Apex Trust Bank",description:String(d.get("note")||"Deposit")});const msg=document.getElementById("msg");if(msg)msg.innerHTML=err?`<span class="err">${err}</span>`:`<span class="ok">Added to your balance. <a href="#receipt/${id}">View receipt</a></span>`;});
+  on("crypto",(d)=>{const amount=Number(d.get("amount"));const id=rid();const err=credit(amount,{id,amount,status:"Successful",at:new Date().toISOString(),type:"Crypto deposit",beneficiary:String(d.get("asset")),bank:"Apex Trust Bank • Crypto",description:"Crypto deposit"});const msg=document.getElementById("msg");if(msg)msg.innerHTML=err?`<span class="err">${err}</span>`:`<span class="ok">Added to your balance. <a href="#receipt/${id}">View receipt</a></span>`;});
+  on("loan",(d)=>{state.loans.unshift({product:String(d.get("product")),amount:Number(d.get("amount")),status:"Pending"});save();render();});
+  on("profile",(d)=>{state.profile={name:String(d.get("name")),email:String(d.get("email")),phone:String(d.get("phone")||"")};save();document.getElementById("msg").innerHTML='<span class="ok">Saved on this device.</span>';});
+  on("support",()=>{document.getElementById("msg").innerHTML='<span class="ok">Message saved in this browser.</span>';});
+  on("kyc",()=>{state.kyc="Pending";save();document.getElementById("msg").innerHTML='<span class="ok">Status is now Pending.</span>';});
+}
+document.getElementById("burger").onclick=()=>document.getElementById("mnav").classList.toggle("hidden");
+function loadCloudUser(uid){
+  state.uid=uid;
+  return db.collection("users").doc(uid).get().then((snap)=>{
+    const data=snap.data();
+    if(data){
+      if(data.name) state.profile.name=data.name;
+      if(data.email) state.profile.email=data.email;
+      if(data.phone) state.profile.phone=data.phone;
+      if(data.currency) state.currency=data.currency;
+      if(data.account) state.account=Object.assign({}, state.account, data.account);
+      if(Array.isArray(data.txs)) state.txs=data.txs;
+      if(Array.isArray(data.cards)) state.cards=data.cards;
+      if(Array.isArray(data.loans)) state.loans=data.loans;
+    }
+    state.signedIn=true;
+    localStorage.setItem(KEY,JSON.stringify(state));
+    go("dash");
+  });
+}
+window.addEventListener("hashchange",render);
+render();
+if(useCloud){
+  auth.onAuthStateChanged((user)=>{
+    if(!user) return;
+    state.uid=user.uid;
+    db.collection("users").doc(user.uid).get().then((snap)=>{
+      const data=snap.data();
+      if(!data) return;
+      state.profile.name=data.name||state.profile.name;
+      state.profile.email=data.email||state.profile.email;
+      state.profile.phone=data.phone||state.profile.phone;
+      if(data.currency) state.currency=data.currency;
+      if(data.account) state.account=Object.assign({}, state.account, data.account);
+      if(Array.isArray(data.txs)) state.txs=data.txs;
+      if(Array.isArray(data.cards)) state.cards=data.cards;
+      if(Array.isArray(data.loans)) state.loans=data.loans;
+      state.signedIn=true;
+      localStorage.setItem(KEY,JSON.stringify(state));
+      if(route()==="signin"||route()==="open") go("dash");
+      else render();
+    });
+  });
+}
+</script>
+</body>
+</html>
